@@ -1,7 +1,8 @@
 # Asteroids Clone – 2D C++ Game
 
-This project is a 2D game inspired by the classic **Asteroids**, implemented in **C++** as a university assignment.  
-The goal of the project was to practice object-oriented programming by transitioning from C to C++, basic game loops, and simple 2D game mechanics.
+This project is a 2D game inspired by the classic **Asteroids**, implemented in **C++** as part of a programming course at the **Technische Hochschule Nürnberg (TH Nürnberg)**. The goal of the project was to practice object-oriented programming by transitioning from C to C++, basic game loops, and simple 2D game mechanics.
+
+The course template and starter framework were provided by **Prof. Enrico Schröder**, and students were required to extend the template into a fully functional game.
 
 ## Gameplay
 
