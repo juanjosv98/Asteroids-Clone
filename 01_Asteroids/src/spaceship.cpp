@@ -1,8 +1,7 @@
 #include "spaceship.h"
 
-
 Spaceship::Spaceship(raylib::Vector2 initialPos)
-: GameObject(initialPos, texturePath_, 1.0, 0.0)
+: PhysicsObject(initialPos, texturePath_, 1.0, 0.0, 0.07f)
 , health_(maxHealth_)
 {
 }
@@ -10,16 +9,30 @@ Spaceship::Spaceship(raylib::Vector2 initialPos)
 void Spaceship::update()
 {
     if(IsKeyDown(KEY_W))
-        move(raylib::Vector2{0.0, -movementSpeed_}.Rotate(DEG2RAD * rot_)); // Attention: Rotate parameter is radians, not degrees!
+    {
+        float thrust = 60.0f;
+        accelerate(raylib::Vector2{0.f, -thrust}.Rotate(DEG2RAD * rot_));
+    }
     if(IsKeyDown(KEY_A))
+    {
         rotate(-rotationSpeed_);
+    }
     if(IsKeyDown(KEY_D))
+    {
         rotate(rotationSpeed_);
+    }
 
-    GameObject::update();
+    PhysicsObject::update();
 }
 
 int Spaceship::getHealth() const
 {
     return health_;
+}
+
+void Spaceship::handleCollision(std::shared_ptr<GameObject> other) {
+    std::shared_ptr<Asteroid> asteroid = std::dynamic_pointer_cast<Asteroid>(other);
+    if (asteroid != nullptr) {
+        health_--;
+    }
 }

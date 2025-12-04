@@ -35,4 +35,10 @@ public:
     float getRotation() const;
 
     raylib::Vector2 getPosition() const;
+
+    virtual void handleCollision(std::shared_ptr<GameObject> other){
+    }
+
+    float getRadius() const;
+
 };

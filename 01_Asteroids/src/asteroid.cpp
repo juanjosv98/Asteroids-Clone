@@ -41,3 +41,10 @@ Asteroid::Size Asteroid::getSize() const
 {
     return size_;
 }
+
+void Asteroid::handleCollision(std::shared_ptr<GameObject> other) {
+    std::shared_ptr<Projectile> projectile = std::dynamic_pointer_cast<Projectile>(other);
+    if (projectile != nullptr) {
+        markForDeletion();
+    }
+}

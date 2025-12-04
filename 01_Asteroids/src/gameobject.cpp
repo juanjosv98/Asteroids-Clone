@@ -74,3 +74,7 @@ bool GameObject::isMarkedForDeletion() const
 {
     return markedForDeletion_;
 }
+
+float GameObject::getRadius() const {
+    return tex_.GetWidth() / 2.0f;
+}

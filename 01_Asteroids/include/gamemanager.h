@@ -25,8 +25,6 @@ private:
 public:
     GameManager();
 
-    std::shared_ptr<Asteroid> createAsteroid(raylib::Vector2 position, Asteroid::Size size, float rotation);
-
     void spawnAsteroid();
 
     void spawnSpaceship();
@@ -36,4 +34,9 @@ public:
     void drawObjects() const;
 
     void drawHud() const;
+
+    void checkCollisions();
+
+    bool isColliding(const std::shared_ptr<GameObject>& obj1, const std::shared_ptr<GameObject>& obj2);
+
 };

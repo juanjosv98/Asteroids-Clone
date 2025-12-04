@@ -91,3 +91,25 @@ void GameManager::launchProjectile()
     auto projectile = std::make_shared<Projectile>(player_->getPosition(), player_->getRotation());
     objects_.push_back(projectile);
 }
+
+void GameManager::checkCollisions() {
+    for (auto& obj1 : objects_) {
+        for (auto& obj2 : objects_) {
+            if (obj1 != obj2 && isColliding(obj1, obj2)) {
+                std::cout << "Collision" << std::endl;
+                obj1->handleCollision(obj2);
+                obj2->handleCollision(obj1);
+            }
+        }
+    }
+}
+
+bool GameManager::isColliding(const std::shared_ptr<GameObject> &obj1, const std::shared_ptr<GameObject> &obj2) {
+    Vector2 pos1 = obj1->getPosition();
+    Vector2 pos2 = obj2->getPosition();
+
+    float radius1 = obj1->getRadius();
+    float radius2 = obj2->getRadius();
+
+    return CheckCollisionCircles(pos1, radius1, pos2, radius2);
+}
